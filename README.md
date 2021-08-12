@@ -72,7 +72,7 @@ information refer to ![this link](https://en.cppreference.com/w/cpp/io/c/fread).
 same original file before running the program.
 ## Sample Output
 ```
-49 Jacob Allahyari jacoball@gmail.com vH#yRHcM#H3ARRwo#d
+49 Jacob Allahyari jacoball@gmail.com vH#yRHcM#HNARRwo#d
 50 Scarlett Mohammadpour sc.mohammadpour@gmail.com Akjd4qnR@oxi
 51 Jane Salavati janesal@yahoo.com YHRYHRY12N
 52 Samuel Shakeri samuel@aut.ac.ir 1N68RA@MHl
