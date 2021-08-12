@@ -65,13 +65,17 @@ int decodePasswords(char* profileBinFileLocation, struct CharMap* maps, int maps
     
     struct Profile profile;
     while (fread(&profile, sizeof(struct Profile), 1, fptr) != 0)
+    {
         for (unsigned int i = 0; profile.password[i]; ++i)
             for (unsigned int j = 0; j < mapsCount; ++j)
                 if (profile.password[i] == maps[j].encoded)
-                    {
-                        fseek(fptr, -1 * sizeof(char), SEEK_CUR);
-                        fwrite(&(maps[j].decoded), sizeof(char), 1, fptr);
-                    }
+                {
+                    printf("%c", maps[j].decoded);
+                    profile.password[i] = maps[j].decoded;
+                }
+        fseek(fptr, -sizeof(struct Profile), SEEK_CUR);
+        fwrite(&profile, sizeof(struct Profile), 1, fptr);
+    }
     close(fptr);
     return 1;
 }
