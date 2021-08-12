@@ -56,3 +56,22 @@ int decodePasswords(char* profileBinFileLocation, struct CharMap* maps, int maps
     close(fptr);
     return 1;
 }
+
+int makeTextFile(char* profileBinFileLocation, char* profileTextFileLocation)
+{
+    FILE* bfptr;
+    bfptr = fopen(profileBinFileLocation, "rb");
+    if (bfptr == NULL)
+        return 0;
+    FILE* tfptr;
+    tfptr = fopen(profileTextFileLocation, "w");
+    if (tfptr == NULL)
+        return 0;
+
+    struct Profile profile;
+    while (fread(&profile, sizeof(struct Profile), 1, bfptr) != 0)
+        fprintf(tfptr, "%d %s %s %s %s\n", profile.id, profile.firstName, profile.lastName, profile.email, profile.password);
+    close(tfptr);
+    close(bfptr);
+    return 1;
+}
