@@ -19,6 +19,24 @@ int loadCharMaps(char *codesFileLocation, struct CharMap **maps);
 int decodePasswords(char *profileBinFileLocation, struct CharMap *maps, int mapsCount);
 int makeTextFile(char *profileBinFileLocation, char *profileTextFileLocation);
 
+int main(void)
+{
+    struct CharMap* maps;
+    int mapsCount = loadCharMaps("code.dat", &maps);
+    if (!decodePasswords("profiles.dat", maps, mapsCount))
+    {
+        printf("Error in decoding passwords!\n");
+        return 0;
+    }
+    if (!makeTextFile("profiles.dat", "profiles.txt"))
+    {
+        printf("Error in making text file!\n");
+        return 0;
+    }
+    free(maps);
+    return 0;
+}
+
 int loadCharMaps(char* codesFileLocation, struct CharMap** mapsAddress)
 {
     FILE* fptr;
