@@ -68,11 +68,13 @@ so while there exists data to be read from the file, the program has to
 continue reading. For this you can make use of `fread`'s output which is a 
 number of type `int`. If there was no data to be read, it returns 0. For more 
 information refer to ![this link](https://en.cppreference.com/w/cpp/io/c/fread).
++ The `profiles.dat` file in this repository is not modified, i.e. it is the 
+same original file before running the program.
 ## Sample Output
 ```
-1 Jacob Allahyari jacoball@gmail.com vH#yRHcM#H3ARRwo#d
-2 Scarlett Mohammadpour sc.mohammadpour@gmail.com Akjd4qnR@oxi
-3 Jane Salavati janesal@yahoo.com YHRYHRY12N
-4 Samuel Shakeri samuel@aut.ac.ir 1N68RA@MHl
-5 Gal Hooshmand hooshmand@aut.ac.ir iM@c49zH8N7Mqw
+49 Jacob Allahyari jacoball@gmail.com vH#yRHcM#H3ARRwo#d
+50 Scarlett Mohammadpour sc.mohammadpour@gmail.com Akjd4qnR@oxi
+51 Jane Salavati janesal@yahoo.com YHRYHRY12N
+52 Samuel Shakeri samuel@aut.ac.ir 1N68RA@MHl
+53 Gal Hooshmand hooshmand@aut.ac.ir iM@c49zH8N7Mqw
 ```
