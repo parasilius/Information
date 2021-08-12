@@ -36,3 +36,23 @@ int loadCharMaps(char* codesFileLocation, struct CharMap** mapsAddress)
     close(fptr);
     return count;
 }
+
+int decodePasswords(char* profileBinFileLocation, struct CharMap* maps, int mapsCount)
+{
+    FILE* fptr;
+    fptr = fopen(profileBinFileLocation, "rb+");
+    if (fptr == NULL)
+        return 0;
+    
+    struct Profile profile;
+    while (fread(&profile, sizeof(struct Profile), 1, fptr) != 0)
+        for (unsigned int i = 0; profile.password[i]; ++i)
+            for (unsigned int j = 0; j < mapsCount; ++j)
+                if (profile.password[i] == maps[j].encoded)
+                    {
+                        fseek(fptr, -1 * sizeof(char), SEEK_CUR);
+                        fwrite(&(maps[j].decoded), sizeof(char), 1, fptr);
+                    }
+    close(fptr);
+    return 1;
+}
